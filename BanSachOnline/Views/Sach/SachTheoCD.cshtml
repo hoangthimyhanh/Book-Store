@@ -1,0 +1,93 @@
+﻿@model IEnumerable<BanSachOnline.Models.SACH>
+@{
+    ViewBag.Title = "Xem Danh Sách Các Loại Sách";
+    Layout = "~/Views/Shared/User_LayoutPage.cshtml";
+}
+
+
+<div style="min-height:300px;">
+
+    <div class="container text-justify row">
+
+        <div class="text-left">
+            <br />
+            <h3 style="font-size:15px;">
+                <i class="fa fa-check" aria-hidden="true"></i> Kết quả dành cho @ViewBag.TenTheLoai
+            </h3>
+            <br />
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+        </div>
+        <div class="row ">
+            @{
+                foreach (var item in Model)
+                {
+                    <div class="col-lg-6 bg-light border border-white">
+                        <div class="p-3 ">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <a href="@Url.Action("ChiTietSach", "Sach", new { @ma = item.MASACH },  null)">
+                                        <img src="~/DULIEU/Images/@item.HINHANH" id="img_giua" alt="...">
+                                    </a>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <a href="@Url.Action("ChiTietSach", "Sach", new { @ma = item.MASACH }, null)">
+                                            <h5 clasxs="card-title">
+                                                @if (item.TENSACH.Length > 25)
+                                                {
+                                                    <p>
+                                                        <strong title="@item.TENSACH">@item.TENSACH.Substring(0, 25)...</strong>
+                                                        <br />
+                                                    </p>
+                                                }
+                                                else
+                                                {
+                                                    <p>
+                                                        <strong title="@item.TENSACH"> @item.TENSACH</strong>
+                                                        <br />
+                                                    </p>
+                                                    <div class="clear"></div>
+                                                }
+
+                                            </h5>
+                                        </a>
+                                        <p class="card-text">
+                                            @{
+                                                if (item.MOTA != null)
+                                                {
+                                                    if (item.MOTA.Length > 60)
+                                                    {
+                                                        <strong title="@item.MOTA">Mô tả: @Html.Raw(@item.MOTA.Substring(0, 60))...</strong>
+                                                        <br />
+                                                    }
+                                                    else
+                                                    {
+                                                        <strong title="@item.MOTA">Mô tả: @Html.Raw(@item.MOTA)</strong>
+                                                        <br />
+                                                        <div class="clear"></div>
+                                                    }
+                                                }
+                                            }
+
+                                        </p>
+                                        <p class="card-text text-red">Giá: @string.Format("{0:0,0 VND}", @item.DONGIABAN)</p>
+                                        <div class="btn btn-outline-info">
+                                            <a href="@Url.Action("ThemGioHang","GioHang",new { @ma = item.MASACH, sl=1 , strURL=Request.Url })">
+                                                <i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm Vào Giỏ Hàng
+                                            </a>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="height:20px"></div>
+                    </div>
+
+                }
+            }
+        </div>
+    </div>
+</div>

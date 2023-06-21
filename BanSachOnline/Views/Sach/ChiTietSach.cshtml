@@ -1,0 +1,47 @@
+﻿@model BanSachOnline.Models.SACH
+
+@{
+    ViewBag.Title = @Model.TENSACH;
+    Layout = "~/Views/Shared/User_LayoutPage.cshtml";
+}
+
+<div class="row bg-light text-justify ">
+    <div class="p-3">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="~/DULIEU/Images/@Model.HINHANH" class="img-fluid rounded-start" alt="...">
+                </a>
+            </div>
+            <div class="col-md-8">
+                <div class="card-body ">
+                    <h3 class="card-title">
+                        <strong title="@Model.TENSACH"> @Model.TENSACH</strong> <br />
+                    </h3>
+                    <h4>Giá:  <b style="color:red"> @string.Format("{0:0,0}", Model.DONGIABAN) VND</b> </h4>
+                    <p>Tác Giả: @Model.TACGIA.TENTG </p>
+                    <p>Nhà Xuất Bản: @Model.NHAXUATBAN.TENNXB</p>
+                    <p>Thể Loại Sách: @Model.THELOAI.TENTL</p>
+                    <div class="row g-0 card-text p-3">
+                        <p title="@Model.MOTA">Mô tả: @Html.Raw( @Model.MOTA)</p>
+                    </div>
+                    <div>
+                        
+                        <div class="row">
+                            <div class="col-lg-1"></div>
+                            <div class="col-lg-3" > Số lượng tồn: @Model.SLTON</div>
+                            <div class="col-lg-7">
+                                <a class="btn btn-outline-danger" href="@Url.Action("ThemGioHang","GioHang",new { ma=Model.MASACH, sl=1 , strURL=Request.Url })">
+                                    <i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm Vào Giỏ Hàng
+                                </a>
+                            </div>
+                            <div class="col-lg-1"></div>
+                        </div>
+                        <p class="card-text"><small class="text-muted">Yên tâm, nâng niu từng cuốn sách</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div style="height:40px"></div>

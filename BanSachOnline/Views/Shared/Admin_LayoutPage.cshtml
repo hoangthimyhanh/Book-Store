@@ -1,0 +1,235 @@
+﻿<!DOCTYPE html>
+@using BanSachOnline.Models;
+
+<html>
+
+<head>
+    <!-- Basic Page Info -->
+    <meta charset="utf-8">
+    <title>@ViewBag.Title</title>
+
+    <!-- Site favicon -->
+    <link rel="apple-touch-icon" style="background:#fff" sizes="180x180" href="~/DULIEU/Admin/images1/Logo_icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/DULIEU/Admin/images1/Logo_ic on.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/DULIEU/Admin/images1/Logo_icon.png">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Google Font -->
+    <link href="https:/fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="~/DULIEU/Admin/styles/core.css">
+    <link rel="stylesheet" type="text/css" href="~/DULIEU/Admin/styles/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="~/DULIEU/Admin/datatables/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="~/DULIEU/Admin/datatables/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="~/DULIEU/Admin/styles/style.css">
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+
+    <!--CKEDITOR-->
+
+    <script src="~/DULIEU/Admin/ckeditor/ckeditor.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https:/www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+    @{
+        NHANVIEN kh = Session["NV"] as NHANVIEN;
+    }
+</head>
+
+<body>
+    <div class="pre-loader">
+        <div class="pre-loader-box">
+            <div class="loader-logo">
+                <img src="~/DULIEU/Admin/images1/logo_180_180.png" width="200px" height="500px" alt="">
+            </div>
+            <div class='loader-progress' id="progress_div">
+                <div class='bar' id='bar1'></div>
+            </div>
+            <div class='percent' id='percent1'>0%</div>
+            <div class="loading-text">
+                Đang Tải...
+            </div>
+        </div>
+    </div>
+
+    <div class="header">
+        <div class="header-left">
+            <div class="menu-icon dw dw-menu"></div>
+            <div class="search-toggle-icon dw dw-search2" data-toggle="header_search"></div>
+            <div class="header-search">
+
+                <div class="form-group mb-0">
+                    @using (Html.BeginForm("TimKiemSachAD", "Admin", FormMethod.Get))
+                    {
+                        <i class="dw dw-search2 search-icon"></i>
+                        <input type="text" class="form-control search-input" placeholder="Search Here" name="txt_search">
+
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="header-right">
+            <!-- Cài Đặt        -->
+            <div class="dashboard-setting user-notification">
+                <div class="dropdown">
+                    <a class="dropdown-toggle no-arrow" href="javascript:;" data-toggle="right-sidebar">
+                        <i class="dw dw-settings2"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="user-notification">
+                <div class="dropdown">
+                    <a class="dropdown-toggle no-arrow" href="#" role="button" data-toggle="dropdown">
+                        <i class="icon-copy dw dw-notification"></i>
+                        <span class="badge notification-active"></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <div class="notification-list mx-h-350 customscroll">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <h3>Thông Báo 1</h3>
+                                        <p>Cập Nhật Phần Mềm 1...</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <h3>Thông Báo 1</h3>
+                                        <p>Cập Nhật Phần Mềm 1...</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <h3>Thông Báo 1</h3>
+                                        <p>Cập Nhật Phần Mềm 1...</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="user-info-dropdown">
+                <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                        <span class="user-icon">
+                            <img src="~/DULIEU/Admin/images1/Logo_admin.png" alt="">
+                        </span>
+                        @if (kh != null)
+                        {
+                            <span class="user-name">@kh.TENNV</span>
+                        }
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                        @if (kh != null)
+                        {
+                            <a class="dropdown-item"><i class="dw dw-user1"></i> @kh.TENNV</a>
+
+                        }
+                        @if (kh == null)
+                        {
+                            <a class="dropdown-item" href="/NguoiDung/DangNhap"><i class="dw dw-user1"></i> Login</a>
+                        }
+                        @if (kh != null)
+                        {
+                            <a class="dropdown-item" href="/Admin/DangXuat"><i class="dw dw-logout"></i> Logout</a>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div style="width:40px;">
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="left-side-bar">
+        <div class="brand-logo">
+            <a href="#">
+
+                <img src="~/DULIEU/Admin/images1/logo_Dai_Dau.png" alt="" class="light-logo">
+            </a>
+            <div class="close-sidebar" data-toggle="left-sidebar-close">
+                <i class="ion-close-round"></i>
+            </div>
+        </div>
+        <div class="menu-block customscroll">
+            <div class="sidebar-menu">
+                <ul id="accordion-menu">
+                    <li>
+                        <a href=" @Url.Action("IndexAD","Admin")" class="dropdown-toggle no-arrow">
+                            <span class="micon dw dw-house-1"></span><span class="mtext">TRANG CHỦ</span>
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle">
+                            <span class="micon dw dw-edit2"></span><span class="mtext">SÁCH</span>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="@Url.Action("ShowSach","Admin")">SÁCH</a></li>
+                            <li><a href="@Url.Action("CreateSach","Admin")">TẠO MỚI</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle">
+                            <span class="micon dw dw-library"></span><span class="mtext">TÁC GIẢ</span>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="@Url.Action("ShowTG","Admin")">TÁC GIẢ</a></li>
+                            <li><a href="@Url.Action("CreateTG","Admin")">THÊM</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle">
+                            <span class="micon fa fa-check-square"></span><span class="mtext">ĐƠN HÀNG</span>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="@Url.Action("ShowListDonHang","Admin")">TẤT CẢ ĐƠN HÀNG</a></li>
+                            <li><a href="@Url.Action("ShowListDonHangOnline","Admin")">ĐƠN HÀNG ONLINE</a></li>
+                            <li><a href="@Url.Action("ShowListDonHangChuaDuyet","Admin")">DUYỆT ĐƠN</a></li>
+                            <li><a href="@Url.Action("ShowListDonHangDaDuyet","Admin")">ĐƠN ĐÃ DUYỆT</a></li>
+                            <li><a href="@Url.Action("ShowListDonHangDaHuy","Admin")">ĐƠN ĐÃ HUỶ</a></li>
+
+
+                        </ul>
+                    </li>
+                    <!-- ------------------------------------------ -->
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="mobile-menu-overlay"></div>
+
+    <div class="main-container">
+
+        <div class="pd-ltr-20">
+            <div class="card-box pd-20 height-100-p mb-30">
+                @RenderBody()
+            </div>
+
+            <div class="footer-wrap pd-20 mb-20 card-box">
+                <h6>℈ Book Store Quản Trị</h6>
+            </div>
+        </div>
+    </div>
+    <!-- js -->
+    <script src="~/DULIEU/Admin/scripts/core.js"></script>
+    <script src="~/DULIEU/Admin/scripts/script.min.js"></script>
+    <script src="~/DULIEU/Admin/scripts/process.js"></script>
+    <script src="~/DULIEU/Admin/scripts/layout-settings.js"></script>
+    <script src="~/DULIEU/Admin/apexcharts/apexcharts.min.js"></script>
+    <script src="~/DULIEU/Admin/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/DULIEU/Admin/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/DULIEU/Admin/datatables/js/dataTables.responsive.min.js"></script>
+    <script src="~/DULIEU/Admin/datatables/js/responsive.bootstrap4.min.js"></script>
+    <script src="~/DULIEU/Admin/scripts/dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+
+</html>

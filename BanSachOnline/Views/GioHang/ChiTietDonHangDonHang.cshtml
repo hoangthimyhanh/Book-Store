@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "Chi Tiết Đơn Hàng";
+    Layout = "~/Views/Shared/User_LayoutPage.cshtml";
+}
+
+@{
+    List<BanSachOnline.Models.CHITIETDH> ctdh = ViewBag.CTDH;
+    BanSachOnline.Models.GIAOHANG giaohang = ViewBag.GHang;
+    BanSachOnline.Models.DONHANG donhang = ViewBag.DonHang;
+
+}
+
+<div class="row">
+    <div class="col-lg-4 col-md-4">
+        <h3>Chi Tiết Đơn Hàng</h3>
+        <div class="card border-dark mb-3" style="max-width: 30rem;">
+            @{
+                string loaidon = "";
+                if (donhang.LOAIDH == null)
+                {
+                    loaidon = "Không rõ!";
+                }
+                else
+                {
+                    loaidon = donhang.LOAIDH.TENLDH;
+                }
+
+            }
+            <div class="card-header">Hoá Đơn @loaidon</div>
+            <div class="card-body text-dark">
+                <h5 class="card-title">Thông Tin Giao Hàng</h5>
+                @if (giaohang == null)
+                {
+
+                }
+                else
+                {
+
+                    <p class="card-text">Người Nhận: @giaohang.NGUOINHAN</p>
+                    <p class="card-text">SĐT người nhận: @giaohang.SDTNGUOINHAN</p>
+                    <p class="card-text">Thời Gian Đặt: @giaohang.THOIGIANDATHANG</p>
+                    <p class="card-text">Địa Chỉ Giao hàng: @giaohang.DIACHIGIAOHANG</p>
+                    <p class="card-text">Thông Tin Giao hàng: @giaohang.TTGIAOHANG</p>
+
+                    if (giaohang.XACNHANDH == "Đã Xác Nhận")
+                    {
+                        <p class="card-text text-white bg-success">Trạng Thái Xác Nhận: @giaohang.XACNHANDH </p>
+                    }
+                    else
+                    {
+                        <p class="card-text text-white bg-warning">Trạng Thái Xác Nhận: @giaohang.XACNHANDH </p>
+                    }
+
+                }
+
+                <p class="card-text text-white bg-danger">Tổng Tiền: @string.Format("{0:0,0} VNĐ", donhang.THANHTIEN) --  @donhang.TRANGTHAI</p>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8 col-md-8">
+        <h3>Sách Đã Mua</h3>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">STT</th>
+                    <th scope="col">Hình Ảnh</th>
+                    <th scope="col">Mã Sách</th>
+                    <th scope="col">Tên Sách</th>
+                    <th scope="col">Số Lượng</th>
+                    <th scope="col">Tổng Tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    if (ViewBag.TB != null)
+                    {
+
+                        <h4 class="alert alert-warning" role="alert">ViewBag.TB</h4>
+                    }
+                    else
+                    {
+                        int count = 1;
+                        foreach (var item in ctdh)
+                        {
+
+                            <tr class="text-left" href="@Url.Action("ChiTietSach", "Sach", new { @ma = item.MASACH }, null)">
+                                <th scope="row">@count</th>
+
+                                <td>
+                                    <img src="~/DULIEU/Images/@Html.DisplayFor(modelItem => item.SACH.HINHANH)" style="max-width:100px; max-height:50px" />
+                                </td>
+
+                                <td>
+                                    @item.MASACH
+                                </td>
+                                <td>
+                                    @item.SACH.TENSACH
+                                </td>
+                                <td>
+                                    @item.SOLUONG
+                                </td>
+                                <td>
+                                    @string.Format("{0:0,0} VNĐ", item.TONGTIEN)
+
+                                </td>
+                            </tr>
+                            count++;
+                        }
+                    }
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

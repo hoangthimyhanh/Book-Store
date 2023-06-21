@@ -1,0 +1,30 @@
+﻿@model IEnumerable<BanSachOnline.Models.TACGIA>
+
+@{
+    ViewBag.Title = "ShowTG";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+}
+
+<h2>TÁC GIẢ CÓ TRONG BOOKS STORE</h2>
+
+@{ BanSachOnline.Models.NHANVIEN nv = Session["NV"] as BanSachOnline.Models.NHANVIEN;
+    if (nv == null)
+    {
+        Response.Redirect("/NguoiDung/DangNhap");
+    }
+}
+
+<table class="table">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TENTG)
+            </td>
+            <td>
+                @*@Html.ActionLink("Delete", "DeleteTG", new { id=item.MATG })*@
+            </td>
+        </tr>
+    }
+
+</table>

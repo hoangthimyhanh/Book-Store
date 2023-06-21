@@ -1,0 +1,12 @@
+﻿@model IEnumerable<BanSachOnline.Models.THELOAI>
+<ul class="dropdown">
+    @foreach (var item in Model)
+    {
+        <li class="border:none">
+            @Html.ActionLink(@item.TENTL, "SachTheoCD", "Sach", new { @MaLoai = item.MATL }, null)
+
+        </li>
+    }
+</ul>
+
+

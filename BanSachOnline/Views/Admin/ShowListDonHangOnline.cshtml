@@ -1,0 +1,105 @@
+﻿@model IEnumerable<BanSachOnline.Models.GIAOHANG>
+
+@{
+    ViewBag.Title = "Tất Cả Đơn Online";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+
+    List<BanSachOnline.Models.GIAOHANG> giaoh = ViewBag.DHang;
+
+    BanSachOnline.Models.NHANVIEN nv = Session["NV"] as BanSachOnline.Models.NHANVIEN;
+    if (nv == null)
+    {
+        Response.Redirect("/NguoiDung/DangNhap");
+    }
+
+}
+
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">STT</th>
+            <th scope="col">Thời Gian</th>
+            <th scope="col">Khách Hàng</th>
+            <th scope="col">Tình Trạng</th>
+            <th scope="col">Số Tiền</th>
+            <th scope="col">Loại Đơn Hàng</th>
+            <th scope="col">Thanh Toán</th>
+            <th scope="col">Nút</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (giaoh != null && giaoh.Count > 0)
+        {
+            int count = 1;
+            foreach (var item in giaoh)
+            {
+                String s = "";
+                if (@item.XACNHANDH == "Chưa Xác Nhận")
+                {
+                    s = "text-left text-white bg-warning";
+                }
+                else if (@item.XACNHANDH == "Huỷ Đơn Hàng")
+                {
+                    s = "text-left text-white bg-danger";
+                }
+                else
+                {
+                    s = "text-left text-white bg-success";
+                }
+
+                <tr class="@s">
+                    <th scope="row">@count</th>
+                    <td>
+                        @item.DONHANG.NGAYMUA
+                    </td>
+                    <td>
+                        @{
+                            if (item.DONHANG.MAKH != null)
+                            {
+                                @Html.DisplayFor(modelItem => item.DONHANG.KHACHHANG.TENKH)
+                            }
+                            else
+                            {
+                                @Html.DisplayFor(modelItem => item.DONHANG.KHACHHANG.MAKH)
+                            }
+                        }
+                    </td>
+
+                    <td>
+                        @item.XACNHANDH
+                    </td>
+
+                    <td>
+                        @string.Format("{0:0,0} VNĐ", item.DONHANG.THANHTIEN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DONHANG.LOAIDH.TENLDH)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DONHANG.TRANGTHAI)
+                    </td>
+                    <td class="bg-white">
+                        <a href="@Url.Action("ShowChiTietDonHang", "Admin", new { idHoaDon = item.MADH })">
+                            <div class="fa fa-list" aria-hidden="true"></div>
+                        </a>
+                        @*<a href="@Url.Action("UpdateDonhangOK", "Admin", new { idHoaDon = item.MADH })">
+                                <div class="fa fa-check-square text-blue" aria-hidden="true"></div>
+                            </a>
+                            <a href="@Url.Action("UpdateDonhangHuy", "Admin", new { idHoaDon = item.MADH })">
+                                <div class="fa fa-window-close text-danger" aria-hidden="true"></div>
+                            </a>*@
+
+                    </td>
+                </tr>
+                count++;
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="8">Không có đơn hàng nào chờ duyệt!</td>
+            </tr>
+        }
+    </tbody>
+</table>

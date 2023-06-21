@@ -1,0 +1,83 @@
+﻿@*@model IEnumerable<LTW_BTL_KETMON.Models.SACH>*@
+@model PagedList.IPagedList<BanSachOnline.Models.SACH>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Quản Lý Sách";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+}
+@{ BanSachOnline.Models.NHANVIEN nv = Session["NV"] as BanSachOnline.Models.NHANVIEN;
+    if (nv == null)
+    {
+        Response.Redirect("/NguoiDung/DangNhap");
+    }
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        @Html.PagedListPager(Model, page => Url.Action("ShowSach", new { page }))
+        <div style="height:12px"></div>
+    </div>
+
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            TÊN
+        </th>
+        <th>
+            GIÁ
+        </th>
+        <th>
+            SL
+        </th>
+        <th>
+            LOẠI
+        </th>
+        <th>
+            TÁC GIẢ
+        </th>
+        <th>
+            NXB
+        </th>
+        <th>
+            ẢNH BÌA
+        </th>
+        <th></th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TENSACH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DONGIABAN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SLTON)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.THELOAI.TENTL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TACGIA.TENTG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NHAXUATBAN.TENNXB)
+            </td>
+            <td>
+                <img src="~/DULIEU/Images/@Html.DisplayFor(modelItem => item.HINHANH)" style="max-width:300px; max-height:100px" />
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "EditSach", new { ma = item.MASACH }) <br />
+                @Html.ActionLink("Chi Tiết", "DetailsSach", new { ma = item.MASACH })<br />
+                @Html.ActionLink("Xoá", "DeleteBook", new { ma = item.MASACH })
+            </td>
+
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<BanSachOnline.Models.DONHANG>
+
+@{
+    ViewBag.Title = "DanhSachDonHang";
+    Layout = "~/Views/Shared/User_LayoutPage.cshtml";
+     BanSachOnline.Models.KHACHHANG kh= Session["KH"] as BanSachOnline.Models.KHACHHANG;
+}
+
+<h2 class="text-center color-blue">Tất cả các đơn hàng đã đặt!</h2>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">STT</th>
+            <th scope="col">Thời Gian Đặt Hàng</th>
+            <th scope="col">Số tiền thanh toán</th>
+            <th scope="col"> Loại Đơn Hàng</th>
+            <th scope="col">Trạng Thái Thanh Toán</th>
+            <th scope="col">Xem Chi Tiết</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            if (ViewBag.TB != null)
+            {
+
+                <h4 class="alert alert-warning" role="alert">ViewBag.TB</h4>
+            }
+            else
+            {
+                int count = 1;
+                foreach (var item in Model)
+                {
+
+                    <tr class="text-left">
+                        <th scope="row">@count</th>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NGAYMUA)
+                        </td>
+                        <td>
+                            @string.Format("{0:0,0} VNĐ", item.THANHTIEN)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LOAIDH.TENLDH)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TRANGTHAI)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("ChiTietDonHangDonHang", "GioHang",new {idHoaDon = item.MADH, idKH = kh.MAKH})">
+                                <div class="btn btn-outline-dark fa fa-list" aria-hidden="true"></div>
+                            </a>
+
+                        </td>
+                    </tr>
+                    count++;
+                }
+            }
+
+        }
+    </tbody>
+</table>
+

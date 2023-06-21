@@ -1,0 +1,74 @@
+﻿@model IEnumerable<BanSachOnline.Models.SACH>
+
+@{
+    ViewBag.Title = "TimKiemSachAD";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+}
+@{ BanSachOnline.Models.NHANVIEN nv = Session["NV"] as BanSachOnline.Models.NHANVIEN;
+    if (nv == null)
+    {
+        Response.Redirect("/NguoiDung/DangNhap");
+    }
+}
+
+<style>
+    th {
+        width: 150px;
+    }
+</style>
+
+<table class="table">
+    <tr>
+        <th>
+            TÊN
+        </th>
+        <th>
+            GIÁ
+        </th>
+        <th>
+            SL
+        </th>
+        <th>
+            LOẠI
+        </th>
+        <th>
+            TÁC GIẢ
+        </th>
+        <th>
+            NXB
+        </th>
+        <th>
+            ẢNH BÌA
+        </th>
+        <th></th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TENSACH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DONGIABAN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SLTON)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.THELOAI.TENTL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TACGIA.TENTG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NHAXUATBAN.TENNXB)
+            </td>
+            <td>
+                <img src="~/DULIEU/Images/@Html.DisplayFor(modelItem => item.HINHANH)" style="width:300px" />
+
+        </tr>
+    }
+
+</table>

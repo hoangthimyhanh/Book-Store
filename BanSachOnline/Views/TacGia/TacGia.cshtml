@@ -1,0 +1,12 @@
+﻿@model IEnumerable<BanSachOnline.Models.TACGIA>
+
+
+<ul class="dropdown">
+    @foreach (var item in Model)
+    {
+        <li class="border">
+            @Html.ActionLink(@item.TENTG, "SachTheoTacGia", "TacGia", new { MaTG = item.MATG }, null)
+
+        </li>
+    }
+</ul>

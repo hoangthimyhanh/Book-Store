@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/Shared/DangKy_DangNhap.cshtml";
+}
+<div class="login-wrap d-flex align-items-center flex-wrap justify-content-center">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 col-lg-7">
+                <img src="~/DULIEU/Admin/images1/background.svg" alt="">
+            </div>
+            <div class="col-md-6 col-lg-5">
+                <div class="login-box bg-white box-shadow border-radius-10">
+                    <div class="login-title">
+                        <h2 class="text-center text-primary">Register </h2>
+                    </div>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.ValidationSummary(true)
+                        {
+                            <h7 style="color:red;text-align:left;">@ViewData["Loi1"]</h7>
+                            <div class="input-group custom">
+                                <td>@Html.TextBox("HotenKH", "", new { @class = "form-control", type = "text", placeholder = "Họ Tên Khách Hàng" })</td>
+                                <div class="input-group-append custom">
+                                    <span class="input-group-text"></span>
+                                </div>
+                            </div>
+                            <h7 style="color:red;text-align:left">@ViewData["Loi2"] </h7>
+                            <div class="input-group custom">
+                                <td>@Html.TextBox("TenDN", "", new { @class = "form-control", type = "text", placeholder = "Tên Đăng Nhập" })</td>
+                                <div class="input-group-append custom">
+                                    <span class="input-group-text"><i class="icon-copy dw dw-user1"></i></span>
+                                </div>
+                            </div>
+                            <h7 style="color:red;text-align:left">@ViewData["Loi3"]</h7>
+                            <div class="input-group custom">
+                                <td>@Html.Password("Matkhau", "", new { @class = "form-control", type = "password", placeholder = "Mật Khẩu" })</td>
+                                <div class="input-group-append custom">
+                                    <span class="input-group-text"><i class="dw dw-padlock1"></i></span>
+                                </div>
+                            </div>
+                            <h7 style="color:red;text-align:left">@ViewData["Loi4"]</h7>
+                            <div class="input-group custom">
+                                <td>@Html.Password("ReMatkhau", "", new { @class = "form-control", type = "password", placeholder = "Nhập Lại Mật Khẩu" })</td>
+                                <div class="input-group-append custom">
+                                    <span class="input-group-text"><i class="dw dw-padlock1"></i></span>
+                                </div>
+                            </div>
+                            <h7 style="color:red;text-align:left">@ViewData["Loi5"]</h7>
+                            <div class="input-group custom">
+                                <td>@Html.TextBox("Dienthoai", "", new { @class = "form-control", type = "tel", placeholder = "Điện Thoại" })</td>
+                                <div class="input-group-append custom">
+                                    <span class="input-group-text"></span>
+                                </div>
+                            </div>
+                            <h7 style="color:red;text-align:left">@ViewData["Loi6"]</h7>
+                            <div class="input-group custom">
+                                <td>@Html.TextBox("CMND", "", new { @class = "form-control", type = "cmnd", placeholder = "CMND/CCCD" })</td>
+                                <div class="input-group-append custom">
+                                    <span class="input-group-text"></span>
+                                </div>
+                            </div>
+                            <h7 style="color:red;text-align:left">@ViewData["Loi8"]</h7>
+                            <div class="input-group custom">
+                                <td>@Html.TextBox("Email", "", new { @class = "form-control", type = "email", placeholder = "Email" })</td>
+                                <div class="input-group-append custom">
+                                    <span class="input-group-text"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="input-group mb-0">
+                                        <input class="btn btn-primary btn-lg btn-block" type="submit" value="Register">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="input-group mb-0">
+                                        <h7>Đã có tài khoản</h7> &nbsp; <h7 style="color:blue" ;> @Html.ActionLink("Login", "DangNhap")</h7>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<h5 style="color:red;text-align:center">@ViewBag.TB</h5>

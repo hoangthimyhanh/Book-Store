@@ -1,0 +1,100 @@
+﻿@model IEnumerable<BanSachOnline.Models.DONHANG>
+
+@{
+    ViewBag.Title = "ShowListDonHang";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+
+
+}
+
+@{ BanSachOnline.Models.NHANVIEN nv = Session["NV"] as BanSachOnline.Models.NHANVIEN;
+    if (nv == null)
+    {
+        Response.Redirect("/NguoiDung/DangNhap");
+    }
+}
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">STT</th>
+            <th scope="col">Thời Gian Đặt Hàng</th>
+            <th scope="col">Tên Khách Hàng - Mã</th>
+            <th scope="col">Tên Nhân Viên - Mã</th>
+            <th scope="col">Số tiền thanh toán</th>
+            <th scope="col"> Loại Đơn Hàng</th>
+            <th scope="col">Trạng Thái Thanh Toán</th>
+            <th scope="col">Nút</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            if (ViewBag.TB != null)
+            {
+
+                <h4 class="alert alert-warning" role="alert">ViewBag.TB</h4>
+            }
+            else
+            {
+                int count = 1;
+                foreach (var item in Model)
+                {
+
+                    <tr class="text-left">
+                        <th scope="row">@count</th>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NGAYMUA)
+                        </td>
+                        <td>
+                            @{
+                                if (item.MAKH != null)
+                                {
+
+                                    @Html.DisplayFor(modelItem => item.KHACHHANG.TENKH)
+                                }
+                                else
+                                {
+                                    @Html.DisplayFor(modelItem => item.MAKH)
+
+                                }
+                            }
+                        </td>
+                        <td>
+                            @{
+                                if (item.MANV != null)
+                                {
+
+                                    @Html.DisplayFor(modelItem => item.NHANVIEN.TENNV)
+                                }
+                                else
+                                {
+                                    @Html.DisplayFor(modelItem => item.MANV)
+
+                                }
+                            }
+                        </td>
+                        <td>
+                            @string.Format("{0:0,0} VNĐ", item.THANHTIEN)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LOAIDH.TENLDH)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TRANGTHAI)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("ShowChiTietDonHang", "Admin",new {idHoaDon = item.MADH})">
+                                <div class="fa fa-list" aria-hidden="true"></div>
+                            </a>
+
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    count++;
+                }
+            }
+
+        }
+    </tbody>
+</table>

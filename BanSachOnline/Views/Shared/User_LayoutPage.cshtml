@@ -1,0 +1,282 @@
+﻿<!DOCTYPE html>
+@using BanSachOnline.Models;
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Book Store">
+    <meta name="keywords" content="Book_Store, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@ViewBag.Title</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="~/DULIEU/KhachHang/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/DULIEU/KhachHang/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/DULIEU/KhachHang/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="~/DULIEU/KhachHang/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="~/DULIEU/KhachHang/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="~/DULIEU/KhachHang/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/DULIEU/KhachHang/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="~/DULIEU/KhachHang/css/style.css" type="text/css">
+    <link href="~/DULIEU/KhachHang/css/styse_Miu.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+
+    @{
+        KHACHHANG kh = Session["KH"] as KHACHHANG;
+    }
+</head>
+
+<body>
+
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-wrapper">
+        <div id="mobile-menu-wrap">
+        </div>
+        <div class="offcanvas__option">
+            <div class="offcanvas__top__hover">
+                <span>VND <i class="arrow_carrot-down"></i></span>
+                <ul>
+                    <li>USD</li>
+                    <li>EUR</li>
+                    <li>USD</li>
+                </ul>
+            </div>
+        </div>
+        <div class="offcanvas__nav__option">
+            <a href="#" class="search-switch"><img src="~/DULIEU/KhachHang/img/icon/search.svg" width="21" height="21" alt=""></a>
+            <a href="#"><img src="~/DULIEU/KhachHang/img/icon/user.svg" width="21" height="21" alt=""></a>
+            @if (kh == null)
+            {
+                <a href="#"><img src="~/DULIEU/KhachHang/img/icon/shop_.svg" width="23" height="23" alt=""></a>
+            }
+            @if (kh != null)
+            {
+                @Html.Action("GioHangPartial", "GioHang")
+            }
+
+        </div>
+
+        <div class="offcanvas__text">
+            <p>Chào mừng bạn đến với chúng tôi!</p>
+        </div>
+    </div>
+    <!-- Offcanvas Menu End -->
+    <!-- Header Section Begin -->
+
+    <header class="header" style=" position: fixed; z-index:999; width: 100%">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3">
+                    <div class="header__logo">
+                        <a href="@Url.Action("index", "Home")"><img src="~/DULIEU/KhachHang/img/logo_books_.png" width="200" height="33" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <nav class="header__menu mobile-menu">
+                        <ul>
+                            <li> @Html.ActionLink("Trang Chủ", "index", "Home")</li>
+                            <li>
+                                @Html.ActionLink("Sách", "ShowAll", "Sach")
+                                <!--Dropdown-->
+                                @Html.Action("LoaiSach", "Sach")
+
+                            </li>
+                            <li>
+                                @Html.ActionLink("Tác Giả", "ShowTacGia", "TacGia")
+                            </li>
+
+                            <li>
+                                @Html.ActionLink("Liên Lạc", "API_WEB", "Home")
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3 col-md-3">
+                    <nav class="header__menu mobile-menu" style="float:right">
+                        <ul style="display:flex;align-content:center;">
+
+                            <li> <a href="#" class="search-switch"><img src="~/DULIEU/KhachHang/img/icon/search.svg" width="21" height="21" alt=""></a></li>
+
+                            <li>
+                                @if (kh == null)
+                                {
+                                    <a style="display:flex;align-content:center;" href="/NguoiDung/DangNhap">
+                                        <img src="~/DULIEU/KhachHang/img/icon/user.svg" width="21" height="21" alt="">
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a style="display:flex;align-content:center;">
+                                        <img src="~/DULIEU/KhachHang/img/icon/user.svg" width="21" height="21" alt="">
+                                    </a>
+                                }
+
+                                @if (kh != null)
+                                {
+                                    <ul class="dropdown">
+                                        <li class="text-white text-center"> @kh.TENKH</li>
+                                        <li>
+                                            <a href="/Home/DangXuat" class="text-white text-center">-> Đăng Xuất</a>
+                                        </li>
+                                    </ul>
+                                }
+                            <li>
+                                @if (kh == null)
+                                {
+                                    <a href="/NguoiDung/DangNhap"><img src="~/DULIEU/KhachHang/img/icon/shop_.svg" width="23" height="23" alt=""></a>
+                                }
+                                @if (kh != null)
+                                {
+                                    @Html.Action("GioHangPartial", "GioHang")
+                                    <ul class="dropdown">
+                                        <li class="text-white text-center">
+                                            <a href="@Url.Action("DanhSachDonHang", "GioHang", new { idKH=kh.MAKH })">Danh Sách Đơn Hàng</a>
+                                        </li>
+                                        
+                                    </ul>
+                                }
+                            </li>
+
+                        </ul>
+                    </nav>
+                </div>
+                <div class="canvas__open"><i class="fa fa-bars"></i></div>
+            </div>
+    </header>
+
+    <!-- Header Section End -->
+    <div class="container">
+
+        <div style="height:100px"> </div>
+        @RenderBody()
+
+    </div>
+
+
+    <!-- Latest Blog Section End -->
+    <!-- Footer Section Begin -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer__about">
+                        <div class="footer__logo">
+                            <a href="#"><img src="~/DULIEU/KhachHang/img/logo_foolter_.png" width="220" height="45" alt=""></a>
+                        </div>
+                        <p>Sách nguồn tri thức vô hạn của nhân loại</p>
+                        <a href="#"><img src="~DULIEU/KhachHang/img/payment.png" alt=""></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-6 col-sm-12">
+                    <div class="footer__widget">
+                        @Html.Action("NhaSach_Footer", "Home")
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer__widget">
+                        <h6>Thư Mới</h6>
+                        <div class="footer__newslatter">
+                            <p>Hãy là người đầu tiên nhận được Sale, các cuốn sách mới xuất bản!</p>
+                            <form action="#">
+                                <input type="text" placeholder="Email của bạn!">
+                                <button type="submit">
+                                    <img src="~/DULIEU/KhachHang/img/icon/mail.svg" alt="Bootstrap" width="32" height="32" />
+                                </button>
+                            </form>
+                        </div>
+
+
+                        <div class="row p-3" style="color: floralwhite;">
+                            <i class="fa fa-instagram col-md-3" aria-hidden="true"></i>
+                            <i class="fa fa-facebook col-md-3" aria-hidden="true"></i>
+                            <i class="fa fa-twitter-square col-md-3" aria-hidden="true"></i>
+                            <i class="fa fa-whatsapp col-md-3" aria-hidden="true"></i>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="footer__copyright__text">
+                        <p>
+                            ©
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script>
+                            Chào mừng đến <a href="#" target="_blank"> Books Store</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+    <!-- Search Begin -->
+
+    @using (Html.BeginForm("TimKiemSach", "Sach", FormMethod.Get))
+    {
+        <div class="search-model">
+            <div class="h-100 d-flex align-items-center justify-content-center">
+                <div class="search-close-switch">+</div>
+                <div class="search-model-form">
+                    <input type="text" id="search-input" placeholder="Tìm Kiếm..." name="txt_search">
+                </div>
+            </div>
+        </div>
+    }
+    <!-- Search End -->
+    <!--Back Top  -->
+    <style>
+        #backTop {
+            width: 40px;
+            height: 40px;
+            background: #ffffff;
+            color: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            border: solid 1px;
+            position: fixed;
+            bottom: 40px;
+            right: 20px;
+            cursor: pointer;
+        }
+    </style>
+    <div id="backTop">
+        <i class="fa fa-chevron-up" aria-hidden="true"></i>
+    </div>
+
+
+    <!-- Js Plugins -->
+
+
+    <script src="~/DULIEU/KhachHang/js/jquery-3.6.1.min.js"></script>
+    <script src="~/DULIEU/KhachHang/js/bootstrap.min.js"></script>
+    <script src="~/DULIEU/KhachHang/js/bootstrap.min.js"></script>
+    <script src="~/DULIEU/KhachHang/js/jquery.nice-select.min.js"></script>
+    <script src="~/DULIEU/KhachHang/js/jquery.nicescroll.min.js"></script>
+    <script src="~/DULIEU/KhachHang/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/DULIEU/KhachHang/js/jquery.countdown.min.js"></script>
+    <script src="~/DULIEU/KhachHang/js/jquery.slicknav.js"></script>
+    <script src="~/DULIEU/KhachHang/js/mixitup.min.js"></script>
+    <script src="~/DULIEU/KhachHang/js/owl.carousel.min.js"></script>
+    <script src="~/DULIEU/KhachHang/js/main.js"></script>
+    <script src="~/DULIEU/KhachHang/js/backTop.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+</body>
+
+

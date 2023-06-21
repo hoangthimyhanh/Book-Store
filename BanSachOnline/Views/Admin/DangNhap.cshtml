@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Đăng Nhập";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+}
+@{ BanSachOnline.Models.NHANVIEN nv = Session["NV"] as BanSachOnline.Models.NHANVIEN;
+    if (nv == null)
+    {
+        Response.Redirect("/NguoiDung/DangNhap");
+    }
+}
+
+<h2 style="text-align:center">Chào mừng admin đến với trang quản lý!</h2>
+

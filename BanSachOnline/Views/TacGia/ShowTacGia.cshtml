@@ -1,0 +1,43 @@
+﻿@model IEnumerable<BanSachOnline.Models.TACGIA>
+
+@{
+    ViewBag.Title = "Hiện Thị Tác Giả";
+    Layout = "~/Views/Shared/User_LayoutPage.cshtml";
+}
+<style>
+    a {
+        color: black;
+    }
+    a:hover{
+        color:red;
+    }
+</style>
+<div class="p-3 bg-light">
+
+    <div class="container text-justify row">
+
+        <div class="text-left">
+            <br />
+            <h3 style="font-size:15px;"><i class="fa fa-check" aria-hidden="true"></i> Tác giả !</h3>
+            <br />
+        </div>
+
+    </div>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-4 border border-white p-1" style="color:red">
+                <i class="fa fa-user-o" aria-hidden="true"></i>
+                @if (item.TENTG.Length > 30)
+                {
+                    <strong title="@item.TENTG"> @Html.ActionLink(@item.TENTG.Substring(0, 30), "SachTheoTacGia", "TacGia", new { MaTG = item.MATG }, null)</strong>
+                }
+                else
+                {
+                    <strong title="@item.TENTG"> @Html.ActionLink(@item.TENTG, "SachTheoTacGia", "TacGia", new { MaTG = item.MATG }, null)</strong>
+                }
+            </div>
+        }
+    </div>
+    <div style="height:30px"></div>
+</div>

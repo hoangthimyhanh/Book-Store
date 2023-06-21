@@ -1,0 +1,523 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{78EAF674-B88B-4FA2-9212-F6597A7EB623}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BanSachOnline</RootNamespace>
+    <AssemblyName>BanSachOnline</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44366</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.Web.Infrastructure.2.0.1\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\GioHangController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NguoiDungController.cs" />
+    <Compile Include="Controllers\SachController.cs" />
+    <Compile Include="Controllers\TacGiaController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QL_BanSach.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QL_BanSach.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Cart\style.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="DULIEU\Admin\apexcharts\apexcharts.css" />
+    <Content Include="DULIEU\Admin\apexcharts\apexcharts.min.js" />
+    <Content Include="DULIEU\Admin\ckeditor\adapters\jquery.js" />
+    <Content Include="DULIEU\Admin\ckeditor\build-config.js" />
+    <Content Include="DULIEU\Admin\ckeditor\ckeditor.js" />
+    <Content Include="DULIEU\Admin\ckeditor\config.js" />
+    <Content Include="DULIEU\Admin\ckeditor\contents.css" />
+    <Content Include="DULIEU\Admin\ckeditor\lang\en.js" />
+    <Content Include="DULIEU\Admin\ckeditor\lang\vi.js" />
+    <Content Include="DULIEU\Admin\ckeditor\plugins\about\dialogs\about.js" />
+    <Content Include="DULIEU\Admin\ckeditor\plugins\about\dialogs\hidpi\logo_ckeditor.png" />
+    <Content Include="DULIEU\Admin\ckeditor\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="DULIEU\Admin\ckeditor\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="DULIEU\Admin\ckeditor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="DULIEU\Admin\ckeditor\plugins\dialog\styles\dialog.css" />
+    <Content Include="DULIEU\Admin\ckeditor\plugins\icons.png" />
+    <Content Include="DULIEU\Admin\ckeditor\plugins\icons_hidpi.png" />
+    <Content Include="DULIEU\Admin\ckeditor\plugins\link\dialogs\anchor.js" />
+    <Content Include="DULIEU\Admin\ckeditor\plugins\link\dialogs\link.js" />
+    <Content Include="DULIEU\Admin\ckeditor\plugins\link\images\anchor.png" />
+    <Content Include="DULIEU\Admin\ckeditor\plugins\link\images\hidpi\anchor.png" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\css\samples.css" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\img\github-top.png" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\img\header-bg.png" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\img\header-separator.png" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\img\logo.png" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\img\logo.svg" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\img\navigation-tip.png" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\index.html" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\js\sample.js" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\js\sf.js" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\old\ajax.html" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\old\api.html" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\old\appendto.html" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\old\assets\inlineall\logo.png" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\old\assets\outputxhtml\outputxhtml.css" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\old\assets\posteddata.php" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\old\assets\sample.jpg" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\old\assets\uilanguages\languages.js" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\old\datafiltering.html" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\old\dialog\assets\my_dialog.js" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\old\dialog\dialog.html" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\old\divreplace.html" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\old\enterkey\enterkey.html" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\old\index.html" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\old\inlineall.html" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\old\inlinebycode.html" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\old\inlinetextarea.html" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\old\jquery.html" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\old\readonly.html" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\old\replacebyclass.html" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\old\replacebycode.html" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\old\sample.css" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\old\sample.js" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\old\sample_posteddata.php" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\old\tabindex.html" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\old\toolbar\toolbar.html" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\old\uicolor.html" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\old\uilanguages.html" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\old\wysiwygarea\fullpage.html" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\old\xhtmlstyle.html" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\toolbarconfigurator\css\fontello.css" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\toolbarconfigurator\font\fontello.svg" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\toolbarconfigurator\font\LICENSE.txt" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\toolbarconfigurator\index.html" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\toolbarconfigurator\js\abstracttoolbarmodifier.js" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\toolbarconfigurator\js\fulltoolbareditor.js" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\toolbarconfigurator\js\toolbarmodifier.js" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\toolbarconfigurator\js\toolbartextmodifier.js" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\toolbarconfigurator\lib\codemirror\codemirror.css" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\toolbarconfigurator\lib\codemirror\codemirror.js" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\toolbarconfigurator\lib\codemirror\javascript.js" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\toolbarconfigurator\lib\codemirror\neo.css" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\toolbarconfigurator\lib\codemirror\show-hint.css" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\toolbarconfigurator\lib\codemirror\show-hint.js" />
+    <Content Include="DULIEU\Admin\ckeditor\skins\moono-lisa\dialog.css" />
+    <Content Include="DULIEU\Admin\ckeditor\skins\moono-lisa\dialog_ie.css" />
+    <Content Include="DULIEU\Admin\ckeditor\skins\moono-lisa\dialog_ie8.css" />
+    <Content Include="DULIEU\Admin\ckeditor\skins\moono-lisa\dialog_iequirks.css" />
+    <Content Include="DULIEU\Admin\ckeditor\skins\moono-lisa\editor.css" />
+    <Content Include="DULIEU\Admin\ckeditor\skins\moono-lisa\editor_gecko.css" />
+    <Content Include="DULIEU\Admin\ckeditor\skins\moono-lisa\editor_ie.css" />
+    <Content Include="DULIEU\Admin\ckeditor\skins\moono-lisa\editor_ie8.css" />
+    <Content Include="DULIEU\Admin\ckeditor\skins\moono-lisa\editor_iequirks.css" />
+    <Content Include="DULIEU\Admin\ckeditor\skins\moono-lisa\icons.png" />
+    <Content Include="DULIEU\Admin\ckeditor\skins\moono-lisa\icons_hidpi.png" />
+    <Content Include="DULIEU\Admin\ckeditor\skins\moono-lisa\images\arrow.png" />
+    <Content Include="DULIEU\Admin\ckeditor\skins\moono-lisa\images\close.png" />
+    <Content Include="DULIEU\Admin\ckeditor\skins\moono-lisa\images\hidpi\close.png" />
+    <Content Include="DULIEU\Admin\ckeditor\skins\moono-lisa\images\hidpi\lock-open.png" />
+    <Content Include="DULIEU\Admin\ckeditor\skins\moono-lisa\images\hidpi\lock.png" />
+    <Content Include="DULIEU\Admin\ckeditor\skins\moono-lisa\images\hidpi\refresh.png" />
+    <Content Include="DULIEU\Admin\ckeditor\skins\moono-lisa\images\lock-open.png" />
+    <Content Include="DULIEU\Admin\ckeditor\skins\moono-lisa\images\lock.png" />
+    <Content Include="DULIEU\Admin\ckeditor\skins\moono-lisa\images\refresh.png" />
+    <Content Include="DULIEU\Admin\ckeditor\skins\moono-lisa\images\spinner.gif" />
+    <Content Include="DULIEU\Admin\ckeditor\styles.js" />
+    <Content Include="DULIEU\Admin\ckeditor\vendor\promise.js" />
+    <Content Include="DULIEU\Admin\datatables\css\dataTables.bootstrap4.min.css" />
+    <Content Include="DULIEU\Admin\datatables\css\jquery.dataTables.min.css" />
+    <Content Include="DULIEU\Admin\datatables\css\responsive.bootstrap4.min.css" />
+    <Content Include="DULIEU\Admin\datatables\css\responsive.dataTables.min.css" />
+    <Content Include="DULIEU\Admin\datatables\images\sort_asc.png" />
+    <Content Include="DULIEU\Admin\datatables\images\sort_asc_disabled.png" />
+    <Content Include="DULIEU\Admin\datatables\images\sort_both.png" />
+    <Content Include="DULIEU\Admin\datatables\images\sort_desc.png" />
+    <Content Include="DULIEU\Admin\datatables\images\sort_desc_disabled.png" />
+    <Content Include="DULIEU\Admin\datatables\js\buttons.bootstrap4.min.js" />
+    <Content Include="DULIEU\Admin\datatables\js\buttons.flash.min.js" />
+    <Content Include="DULIEU\Admin\datatables\js\buttons.html5.min.js" />
+    <Content Include="DULIEU\Admin\datatables\js\buttons.print.min.js" />
+    <Content Include="DULIEU\Admin\datatables\js\dataTables.bootstrap4.min.js" />
+    <Content Include="DULIEU\Admin\datatables\js\dataTables.buttons.min.js" />
+    <Content Include="DULIEU\Admin\datatables\js\dataTables.responsive.min.js" />
+    <Content Include="DULIEU\Admin\datatables\js\jquery.dataTables.min.js" />
+    <Content Include="DULIEU\Admin\datatables\js\jszip.min.js" />
+    <Content Include="DULIEU\Admin\datatables\js\pdfmake.min.js" />
+    <Content Include="DULIEU\Admin\datatables\js\responsive.bootstrap4.min.js" />
+    <Content Include="DULIEU\Admin\datatables\js\vfs_fonts.js" />
+    <Content Include="DULIEU\Admin\fonts\dropways.css" />
+    <Content Include="DULIEU\Admin\fonts\dropways.svg" />
+    <Content Include="DULIEU\Admin\fonts\font-awesome\css\font-awesome.css" />
+    <Content Include="DULIEU\Admin\fonts\font-awesome\css\font-awesome.min.css" />
+    <Content Include="DULIEU\Admin\fonts\fontawesome-webfont.svg" />
+    <Content Include="DULIEU\Admin\fonts\foundation-icons.css" />
+    <Content Include="DULIEU\Admin\fonts\foundation-icons.svg" />
+    <Content Include="DULIEU\Admin\fonts\ionicons-master\css\ionicons.css" />
+    <Content Include="DULIEU\Admin\fonts\ionicons-master\css\ionicons.min.css" />
+    <Content Include="DULIEU\Admin\fonts\ionicons.svg" />
+    <Content Include="DULIEU\Admin\fonts\themify-icons\themify-icons.css" />
+    <Content Include="DULIEU\Admin\fonts\themify.svg" />
+    <Content Include="DULIEU\Admin\images1\background.svg" />
+    <Content Include="DULIEU\Admin\images1\briefcase.svg" />
+    <Content Include="DULIEU\Admin\images1\logo_180_180.png" />
+    <Content Include="DULIEU\Admin\images1\Logo_admin.png" />
+    <Content Include="DULIEU\Admin\images1\logo_Dai_Dau.png" />
+    <Content Include="DULIEU\Admin\images1\Logo_icon.png" />
+    <Content Include="DULIEU\Admin\images1\person.svg" />
+    <Content Include="DULIEU\Admin\scripts\advanced-components.js" />
+    <Content Include="DULIEU\Admin\scripts\apexcharts-setting.js" />
+    <Content Include="DULIEU\Admin\scripts\calendar-setting.js" />
+    <Content Include="DULIEU\Admin\scripts\colorpicker.js" />
+    <Content Include="DULIEU\Admin\scripts\core.js" />
+    <Content Include="DULIEU\Admin\scripts\core.min.js" />
+    <Content Include="DULIEU\Admin\scripts\dashboard.js" />
+    <Content Include="DULIEU\Admin\scripts\dashboard2.js" />
+    <Content Include="DULIEU\Admin\scripts\datatable-setting.js" />
+    <Content Include="DULIEU\Admin\scripts\highchart-setting.js" />
+    <Content Include="DULIEU\Admin\scripts\jvectormap-setting.js" />
+    <Content Include="DULIEU\Admin\scripts\knob-chart-setting.js" />
+    <Content Include="DULIEU\Admin\scripts\layout-settings.js" />
+    <Content Include="DULIEU\Admin\scripts\process.js" />
+    <Content Include="DULIEU\Admin\scripts\range-slider-setting.js" />
+    <Content Include="DULIEU\Admin\scripts\script.js" />
+    <Content Include="DULIEU\Admin\scripts\script.min.js" />
+    <Content Include="DULIEU\Admin\scripts\steps-setting.js" />
+    <Content Include="DULIEU\Admin\styles\core.css" />
+    <Content Include="DULIEU\Admin\styles\core.min.css" />
+    <Content Include="DULIEU\Admin\styles\icon-font.css" />
+    <Content Include="DULIEU\Admin\styles\icon-font.min.css" />
+    <Content Include="DULIEU\Admin\styles\style.css" />
+    <Content Include="DULIEU\Admin\styles\style.min.css" />
+    <Content Include="DULIEU\Images\1.jpg" />
+    <Content Include="DULIEU\Images\10.jpg" />
+    <Content Include="DULIEU\Images\11.jpg" />
+    <Content Include="DULIEU\Images\12.jpg" />
+    <Content Include="DULIEU\Images\13.jpg" />
+    <Content Include="DULIEU\Images\14.jpg" />
+    <Content Include="DULIEU\Images\15.jpg" />
+    <Content Include="DULIEU\Images\16.jpg" />
+    <Content Include="DULIEU\Images\17.jpg" />
+    <Content Include="DULIEU\Images\18.jpg" />
+    <Content Include="DULIEU\Images\19.jpg" />
+    <Content Include="DULIEU\Images\2.jpg" />
+    <Content Include="DULIEU\Images\20.jpg" />
+    <Content Include="DULIEU\Images\21.jpg" />
+    <Content Include="DULIEU\Images\22.jpg" />
+    <Content Include="DULIEU\Images\23.jpg" />
+    <Content Include="DULIEU\Images\24.jpg" />
+    <Content Include="DULIEU\Images\25.jpg" />
+    <Content Include="DULIEU\Images\26.jpg" />
+    <Content Include="DULIEU\Images\27.jpg" />
+    <Content Include="DULIEU\Images\28.jpg" />
+    <Content Include="DULIEU\Images\29.jpg" />
+    <Content Include="DULIEU\Images\3.jpg" />
+    <Content Include="DULIEU\Images\30.jpg" />
+    <Content Include="DULIEU\Images\4.jpg" />
+    <Content Include="DULIEU\Images\5.jpg" />
+    <Content Include="DULIEU\Images\6.jpg" />
+    <Content Include="DULIEU\Images\7.jpg" />
+    <Content Include="DULIEU\Images\8.jpg" />
+    <Content Include="DULIEU\Images\9.jpg" />
+    <Content Include="DULIEU\KhachHang\css\bootstrap.min.css" />
+    <Content Include="DULIEU\KhachHang\css\elegant-icons.css" />
+    <Content Include="DULIEU\KhachHang\css\font-awesome.min.css" />
+    <Content Include="DULIEU\KhachHang\css\magnific-popup.css" />
+    <Content Include="DULIEU\KhachHang\css\nice-select.css" />
+    <Content Include="DULIEU\KhachHang\css\owl.carousel.min.css" />
+    <Content Include="DULIEU\KhachHang\css\slicknav.min.css" />
+    <Content Include="DULIEU\KhachHang\css\style.css" />
+    <Content Include="DULIEU\KhachHang\css\styse_Miu.css" />
+    <Content Include="DULIEU\KhachHang\fonts\ElegantIcons.svg" />
+    <Content Include="DULIEU\KhachHang\fonts\fontawesome-webfont.svg" />
+    <Content Include="DULIEU\KhachHang\img\icon\calendar.png" />
+    <Content Include="DULIEU\KhachHang\img\icon\cart.png" />
+    <Content Include="DULIEU\KhachHang\img\icon\compare.png" />
+    <Content Include="DULIEU\KhachHang\img\icon\heart.png" />
+    <Content Include="DULIEU\KhachHang\img\icon\heart.svg" />
+    <Content Include="DULIEU\KhachHang\img\icon\mail-envelope-heart.svg" />
+    <Content Include="DULIEU\KhachHang\img\icon\mail.svg" />
+    <Content Include="DULIEU\KhachHang\img\icon\search.png" />
+    <Content Include="DULIEU\KhachHang\img\icon\search.svg" />
+    <Content Include="DULIEU\KhachHang\img\icon\shopping.png" />
+    <Content Include="DULIEU\KhachHang\img\icon\shop_.svg" />
+    <Content Include="DULIEU\KhachHang\img\icon\user.svg" />
+    <Content Include="DULIEU\KhachHang\img\logo_books_.png" />
+    <Content Include="DULIEU\KhachHang\img\logo_foolter_.png" />
+    <Content Include="DULIEU\KhachHang\js\backTop.js" />
+    <Content Include="DULIEU\KhachHang\js\bootstrap.min.js" />
+    <Content Include="DULIEU\KhachHang\js\jquery-3.6.1.min.js" />
+    <Content Include="DULIEU\KhachHang\js\jquery.countdown.min.js" />
+    <Content Include="DULIEU\KhachHang\js\jquery.magnific-popup.min.js" />
+    <Content Include="DULIEU\KhachHang\js\jquery.nice-select.min.js" />
+    <Content Include="DULIEU\KhachHang\js\jquery.nicescroll.min.js" />
+    <Content Include="DULIEU\KhachHang\js\jquery.slicknav.js" />
+    <Content Include="DULIEU\KhachHang\js\main.js" />
+    <Content Include="DULIEU\KhachHang\js\mixitup.min.js" />
+    <Content Include="DULIEU\KhachHang\js\owl.carousel.min.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\QL_BanSach.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>QL_BanSach.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="DULIEU\Admin\ckeditor\bender-runner.config.json" />
+    <Content Include="DULIEU\Admin\ckeditor\CHANGES.md" />
+    <Content Include="DULIEU\Admin\ckeditor\LICENSE.md" />
+    <Content Include="DULIEU\Admin\ckeditor\README.md" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\toolbarconfigurator\font\config.json" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\toolbarconfigurator\font\fontello.eot" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\toolbarconfigurator\font\fontello.ttf" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
+    <Content Include="DULIEU\Admin\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
+    <Content Include="DULIEU\Admin\ckeditor\SECURITY.md" />
+    <Content Include="DULIEU\Admin\ckeditor\skins\moono-lisa\readme.md" />
+    <Content Include="DULIEU\Admin\fonts\dropways.eot" />
+    <Content Include="DULIEU\Admin\fonts\dropways.ttf" />
+    <Content Include="DULIEU\Admin\fonts\dropways.woff" />
+    <Content Include="DULIEU\Admin\fonts\fontawesome-webfont.eot" />
+    <Content Include="DULIEU\Admin\fonts\fontawesome-webfont.ttf" />
+    <Content Include="DULIEU\Admin\fonts\fontawesome-webfont.woff" />
+    <Content Include="DULIEU\Admin\fonts\fontawesome-webfont.woff2" />
+    <Content Include="DULIEU\Admin\fonts\FontAwesome.otf" />
+    <Content Include="DULIEU\Admin\fonts\foundation-icons.eot" />
+    <Content Include="DULIEU\Admin\fonts\foundation-icons.ttf" />
+    <Content Include="DULIEU\Admin\fonts\foundation-icons.woff" />
+    <Content Include="DULIEU\Admin\fonts\ionicons.eot" />
+    <Content Include="DULIEU\Admin\fonts\ionicons.ttf" />
+    <Content Include="DULIEU\Admin\fonts\ionicons.woff" />
+    <Content Include="DULIEU\Admin\fonts\themify.eot" />
+    <Content Include="DULIEU\Admin\fonts\themify.ttf" />
+    <Content Include="DULIEU\Admin\fonts\themify.woff" />
+    <Content Include="DULIEU\KhachHang\css\style.css.map" />
+    <Content Include="DULIEU\KhachHang\fonts\ElegantIcons.eot" />
+    <Content Include="DULIEU\KhachHang\fonts\ElegantIcons.ttf" />
+    <Content Include="DULIEU\KhachHang\fonts\ElegantIcons.woff" />
+    <Content Include="DULIEU\KhachHang\fonts\fontawesome-webfont.eot" />
+    <Content Include="DULIEU\KhachHang\fonts\fontawesome-webfont.ttf" />
+    <Content Include="DULIEU\KhachHang\fonts\fontawesome-webfont.woff" />
+    <Content Include="DULIEU\KhachHang\fonts\fontawesome-webfont.woff2" />
+    <Content Include="DULIEU\KhachHang\fonts\FontAwesome.otf" />
+    <None Include="packages.config" />
+    <Content Include="Views\Shared\Admin_LayoutPage.cshtml" />
+    <Content Include="Views\Shared\DangKy_DangNhap.cshtml" />
+    <Content Include="Views\Shared\User_LayoutPage.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\API_WEB.cshtml" />
+    <Content Include="Views\Home\Baner.cshtml" />
+    <Content Include="Views\Home\NhaSach_Footer.cshtml" />
+    <Content Include="Views\Home\Show4.cshtml" />
+    <Content Include="Views\Admin\CreateSach.cshtml" />
+    <Content Include="Views\Admin\CreateTG.cshtml" />
+    <Content Include="Views\Admin\DangNhap.cshtml" />
+    <Content Include="Views\Admin\DeleteBook.cshtml" />
+    <Content Include="Views\Admin\DetailsSach.cshtml" />
+    <Content Include="Views\Admin\EditSach.cshtml" />
+    <Content Include="Views\Admin\IndexAD.cshtml" />
+    <Content Include="Views\Admin\ShowSach.cshtml" />
+    <Content Include="Views\Admin\ShowTG.cshtml" />
+    <Content Include="Views\Admin\TimKiemSachAD.cshtml" />
+    <Content Include="Views\GioHang\GioHang.cshtml" />
+    <Content Include="Views\GioHang\GioHangPartial.cshtml" />
+    <Content Include="Views\GioHang\Payment.cshtml" />
+    <Content Include="Views\Sach\ChiTietSach.cshtml" />
+    <Content Include="Views\Sach\LoaiSach.cshtml" />
+    <Content Include="Views\Sach\SachTheoCD.cshtml" />
+    <Content Include="Views\Sach\ShowAll.cshtml" />
+    <Content Include="Views\Sach\TimKiemSach.cshtml" />
+    <Content Include="Views\NguoiDung\DangKy.cshtml" />
+    <Content Include="Views\NguoiDung\DangNhap.cshtml" />
+    <Content Include="Views\TacGia\SachTheoTacGia.cshtml" />
+    <Content Include="Views\TacGia\ShowTacGia.cshtml" />
+    <Content Include="Views\TacGia\TacGia.cshtml" />
+    <Content Include="Views\Error\PageNotFound.cshtml" />
+    <Content Include="Views\GioHang\DanhSachDonHang.cshtml" />
+    <Content Include="Views\GioHang\ChiTietDonHangDonHang.cshtml" />
+    <Content Include="Views\Admin\ShowListDonHang.cshtml" />
+    <Content Include="Views\Admin\ShowChiTietDonHang.cshtml" />
+    <Content Include="Views\Admin\ShowListDonHangChuaDuyet.cshtml" />
+    <Content Include="Views\Admin\ShowListDonHangDaDuyet.cshtml" />
+    <Content Include="Views\Admin\ShowListDonHangDaHuy.cshtml" />
+    <Content Include="Views\Admin\ShowListDonHangOnline.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Models\QL_BanSach.dbml.layout">
+      <DependentUpon>QL_BanSach.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54877</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44366/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
